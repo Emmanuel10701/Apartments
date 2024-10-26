@@ -4,27 +4,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FaTimes, FaChevronDown, FaChevronUp, FaHome, FaList, FaInfoCircle, FaPhone, FaTachometerAlt } from 'react-icons/fa'; // Import necessary icons
 import { usePathname, useRouter } from 'next/navigation';
 
-export interface LinkItem {
-  name: string;
-  href: string;
-  icon: React.ReactNode;
-}
-
-const LINKS: LinkItem[] = [
+const LINKS = [
   { name: 'Home', href: '/', icon: <FaHome className="text-blue-500" /> },
   { name: 'Contact', href: '/contact', icon: <FaPhone className="text-red-500" /> },
   { name: 'Dashboard', href: '/dashboard', icon: <FaTachometerAlt className="text-purple-500" /> },
 ];
 
-interface SidebarProps {
-  isMenuOpen: boolean;
-  toggleMenu: () => void;
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
+const Sidebar = ({ isMenuOpen, toggleMenu }) => {
   const [isDashboardDropdownOpen, setIsDashboardDropdownOpen] = useState(false);
   const [isListingsDropdownOpen, setIsListingsDropdownOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef(null);
   const path = usePathname();
   const router = useRouter();
 
@@ -32,8 +21,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
   const toggleListingsDropdown = () => setIsListingsDropdownOpen(!isListingsDropdownOpen);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
         toggleMenu();
       }
     };
@@ -49,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
     };
   }, [isMenuOpen, toggleMenu]);
 
-  const handleLinkClick = (href: string) => {
+  const handleLinkClick = (href) => {
     router.push(href);
     // Uncomment the line below if you want the sidebar to close when a link is clicked
     // toggleMenu();
