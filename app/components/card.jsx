@@ -6,26 +6,7 @@ import Image from 'next/image';
 import { FaStar, FaMapMarkerAlt, FaPhone, FaEnvelope, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Link from 'next/link';
 
-interface Apartment {
-    id: number;
-    title: string;
-    images: string[];
-    rating: number;
-    location: string;
-    availableRooms: number;
-    rentalType: string;
-    description: string;
-    price: number;
-    minPrice: number;
-    phoneNumber: string;
-    email: string;
-}
-
-interface ApartmentCardProps {
-    apartment: Apartment;
-}
-
-const ApartmentCard: React.FC<ApartmentCardProps> = ({ apartment }) => {
+const ApartmentCard = ({ apartment }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
