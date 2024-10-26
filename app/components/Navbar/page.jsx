@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 import { CiMenuBurger } from "react-icons/ci";
 import { useRouter } from 'next/navigation';
-import Sidebar from './../sidebar/page';
+import Sidebar from '../sidebar/page';
 import { useSession, signOut } from 'next-auth/react'; // Import useSession and signOut
 
-const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const { data: session } = useSession(); // Get session data
 
