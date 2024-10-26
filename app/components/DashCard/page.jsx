@@ -3,40 +3,19 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { FaStar, FaMapMarkerAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaStar, FaMapMarkerAlt } from "react-icons/fa";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-interface Apartment {
-    id: string;
-    name: string;
-    minPrice: number;
-    maxPrice: number;
-    rentalType: string;
-    availableRooms: string | null;
-    starRating: number;
-    description: string | null;
-    propertyType: string;
-    kitchenImage: string;
-    livingRoomImage: string;
-    bedroomImage: string;
-    apartmentImage: string;
-    phoneNumber: string;
-    email: string;
-    address: string;
-    createdAt: string;
-    updatedAt: string;
-}
-
 const ApartmentList = () => {
     const { data: session } = useSession();
-    const [apartments, setApartments] = useState<Apartment[]>([]);
+    const [apartments, setApartments] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 1;
     const [loading, setLoading] = useState(true);
-    const [editingApartment, setEditingApartment] = useState<Apartment | null>(null);
-    const [formData, setFormData] = useState<Apartment | null>(null);
+    const [editingApartment, setEditingApartment] = useState(null);
+    const [formData, setFormData] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -62,7 +41,7 @@ const ApartmentList = () => {
 
     const totalPages = Math.ceil(apartments.length / itemsPerPage);
 
-    const handlePageChange = (page: number) => {
+    const handlePageChange = (page) => {
         if (page >= 0 && page < totalPages) {
             setCurrentPage(page);
         }
@@ -72,12 +51,12 @@ const ApartmentList = () => {
         ? apartments.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage) 
         : [];
 
-    const handleEditClick = (apartment: Apartment) => {
+    const handleEditClick = (apartment) => {
         setEditingApartment(apartment);
         setFormData(apartment);
     };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleInputChange = (e) => {
         if (formData) {
             const { name, value } = e.target;
             setFormData({ ...formData, [name]: value });
@@ -108,7 +87,7 @@ const ApartmentList = () => {
         }
     };
 
-    const handleDeleteApartment = async (apartmentId: string) => {
+    const handleDeleteApartment = async (apartmentId) => {
         const response = await fetch(`/api/Apartment/${apartmentId}`, {
             method: 'DELETE',
         });
@@ -121,14 +100,6 @@ const ApartmentList = () => {
         }
     };
 
-    const goToNextImage = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % 4); // Adjust based on actual number of images
-    };
-
-    const goToPrevImage = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + 4) % 4); // Adjust based on actual number of images
-    };
-
     if (loading) {
         return <CircularProgress />;
     }
@@ -138,7 +109,7 @@ const ApartmentList = () => {
             <ToastContainer />
             {apartments.length === 0 ? (
                 <div className="text-center mt-[29%]">
-                    <h2 className=" text-center test-3xl bg-gradient-to-r from-purple-500 via-orange-500 to-indigo-500 ">
+                    <h2 className="text-3xl bg-gradient-to-r from-purple-500 via-orange-500 to-indigo-500">
                         You Have No Apartments
                     </h2>
                     <p className="text-gray-500 mt-2">Start adding apartments to your dashboard!</p>
@@ -148,15 +119,13 @@ const ApartmentList = () => {
                     {displayedApartments.map((apartment) => (
                         <div key={apartment.id} className="w-full border rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 mb-4">
                             <div className="relative w-full h-44">
-                               
                                 <Image
                                     className="w-full h-full object-cover"
-                                    src={apartment.apartmentImage} // You can replace this with an array of images
+                                    src={apartment.apartmentImage}
                                     alt={`Image of ${apartment.name}`}
                                     width={240}
                                     height={160}
                                 />
-                               
                             </div>
                             <div className="p-4 h-full flex flex-col justify-between">
                                 {editingApartment?.id === apartment.id ? (
@@ -208,9 +177,7 @@ const ApartmentList = () => {
                                             </button>
                                         </div>
                                     </div>
-                                ) : 
-                                
-                                (
+                                ) : (
                                     <div className="w-full mx-auto">
                                         <h5 className="text-xl font-bold text-slate-600">{apartment.name}</h5>
                                         <div className="flex items-center mt-2 mb-2">
@@ -227,12 +194,8 @@ const ApartmentList = () => {
                                         </div>
                                         <p className="text-slate-600 text-md font-bold">Rooms: <span className="font-bold text-purple-700">{apartment.availableRooms} | Type: {apartment.rentalType}</span></p>
                                         <div className="flex justify-between">
-                                            <p className="text-slate-600 text-md font-bold">
-                                                Min Price: ${apartment.minPrice}
-                                            </p>
-                                            <p className="text-slate-600 text-md font-bold">
-                                                Max Price: ${apartment.maxPrice}
-                                            </p>
+                                            <p className="text-slate-600 text-md font-bold">Min Price: ${apartment.minPrice}</p>
+                                            <p className="text-slate-600 text-md font-bold">Max Price: ${apartment.maxPrice}</p>
                                         </div>
 
                                         <div className="flex justify-between mt-4">
