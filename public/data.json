@@ -1,0 +1,230 @@
+[
+    {
+        "id": 1,
+        "title": "Luxury Studio Apartment",
+        "images": [
+            "/uploads/chicago.avif",
+            "/uploads/sell1.jpeg",
+            "/uploads/int2.jpg",
+            "/uploads/bed11.jpeg"
+        ],
+        "rating": 4.5,
+        "location": "456 Elm St, Metropolis",
+        "availableRooms": 1,
+        "rentalType": "Studio",
+        "description": "A modern studio apartment with luxury amenities.",
+        "price": 1800,
+        "minPrice": 1700,
+        "phoneNumber": "1234567890",
+        "email": "luxury@apartment.com"
+    },
+    {
+        "id": 2,
+        "title": "Cozy Apartment in City Center",
+        "images": [
+            "/uploads/rent1.jpeg",
+            "/uploads/bed12.jpeg",
+            "/uploads/kitchen1.jpeg",
+            "/uploads/sell4.jpeg"
+        ],
+        "rating": 4.0,
+        "location": "123 Main St, Cityville",
+        "availableRooms": 2,
+        "rentalType": "Condo",
+        "description": "This beautiful apartment offers stunning city views and is located near all amenities.",
+        "price": 1500,
+        "minPrice": 1400,
+        "phoneNumber": "0987654321",
+        "email": "cozy@apartment.com"
+    },
+    {
+        "id": 3,
+        "title": "Modern Two-Bedroom Apartment",
+        "images": [
+            "/uploads/ling.jpeg",
+            "/uploads/rent4.jpeg",
+            "/uploads/sell1.jpeg",
+            "/uploads/kitchen2.jpeg"
+        ],
+        "rating": 4.2,
+        "location": "789 Oak St, Suburbia",
+        "availableRooms": 2,
+        "rentalType": "Apartment",
+        "description": "A spacious two-bedroom apartment perfect for families.",
+        "price": 2000,
+        "minPrice": 1900,
+        "phoneNumber": "2345678901",
+        "email": "modern@apartment.com"
+    },
+    {
+        "id": 4,
+        "title": "Charming Cottage Style Apartment",
+        "images": [
+            "/uploads/bed12.jpeg",
+            "/uploads/sell4.jpeg",
+            "/uploads/rent6.jpeg",
+            "/uploads/kitchen1.jpeg"
+        ],
+        "rating": 4.3,
+        "location": "321 Maple Ave, Countryside",
+        "availableRooms": 1,
+        "rentalType": "Cottage",
+        "description": "A cozy cottage-style apartment surrounded by nature.",
+        "price": 1600,
+        "minPrice": 1500,
+        "phoneNumber": "3456789012",
+        "email": "charming@apartment.com"
+    },
+    {
+        "id": 5,
+        "title": "Elegant Penthouse Suite",
+        "images": [
+            "/uploads/bed11.jpeg",
+            "/uploads/rent4.jpeg",
+            "/uploads/kitchen1.jpeg",
+            "/uploads/sell1.jpeg"
+        ],
+        "rating": 5.0,
+        "location": "555 High St, Cityview",
+        "availableRooms": 1,
+        "rentalType": "Penthouse",
+        "description": "An elegant penthouse suite with stunning views of the skyline.",
+        "price": 3000,
+        "minPrice": 2900,
+        "phoneNumber": "4567890123",
+        "email": "elegant@apartment.com"
+    },
+    {
+        "id": 6,
+        "title": "Sunny Beachfront Apartment",
+        "images": [
+            "/uploads/ling.jpeg",
+            "/uploads/rent6.jpeg",
+            "/uploads/bed12.jpeg",
+            "/uploads/sell1.jpeg"
+        ],
+        "rating": 4.7,
+        "location": "789 Ocean Dr, Beachside",
+        "availableRooms": 2,
+        "rentalType": "Beachfront",
+        "description": "A sunny apartment right on the beach, perfect for vacations.",
+        "price": 2500,
+        "minPrice": 2400,
+        "phoneNumber": "5678901234",
+        "email": "sunny@apartment.com"
+    },
+    {
+        "id": 7,
+        "title": "Urban Loft Apartment",
+        "images": [
+            "/uploads/rent4.jpeg",
+            "/uploads/sell6.jpeg",
+            "/uploads/kitchen1.jpeg",
+            "/uploads/bed11.jpeg"
+        ],
+        "rating": 4.6,
+        "location": "101 Industrial St, Metropolis",
+        "availableRooms": 1,
+        "rentalType": "Loft",
+        "description": "An urban loft with high ceilings and an open floor plan.",
+        "price": 2200,
+        "minPrice": 2100,
+        "phoneNumber": "6789012345",
+        "email": "urban@apartment.com"
+    },
+    {
+        "id": 8,
+        "title": "Chic Downtown Apartment",
+        "images": [
+            "/uploads/sell1.jpeg",
+            "/uploads/kitchen2.jpeg",
+            "/uploads/ling2.jpeg",
+            "/uploads/bed12.jpeg"
+        ],
+        "rating": 4.4,
+        "location": "789 Downtown Rd, Citycenter",
+        "availableRooms": 1,
+        "rentalType": "Apartment",
+        "description": "A chic apartment located in the heart of downtown.",
+        "price": 2100,
+        "minPrice": 2000,
+        "phoneNumber": "1122334455",
+        "email": "chic@apartment.com"
+    },
+    {
+        "id": 9,
+        "title": "Spacious Family Home",
+        "images": [
+            "/uploads/sell4.jpeg",
+            "/uploads/ling3.jpeg",
+            "/uploads/kitchen1.jpeg",
+            "/uploads/rent6.jpeg"
+        ],
+        "rating": 4.5,
+        "location": "456 Family St, Suburbia",
+        "availableRooms": 3,
+        "rentalType": "Family Home",
+        "description": "A spacious home perfect for families with children.",
+        "price": 2400,
+        "minPrice": 2300,
+        "phoneNumber": "2233445566",
+        "email": "spacious@apartment.com"
+    },
+    {
+        "id": 10,
+        "title": "Elegant City Apartment",
+        "images": [
+            "/uploads/chicago.avif",
+            "/uploads/bed11.jpeg",
+            "/uploads/sell1.jpeg",
+            "/uploads/kitchen2.jpeg"
+        ],
+        "rating": 4.8,
+        "location": "321 City St, Metropolis",
+        "availableRooms": 2,
+        "rentalType": "Apartment",
+        "description": "An elegant city apartment with modern features.",
+        "price": 2600,
+        "minPrice": 2500,
+        "phoneNumber": "3344556677",
+        "email": "elegantcity@apartment.com"
+    },
+    {
+        "id": 11,
+        "title": "Stylish Studio Apartment",
+        "images": [
+            "/uploads/ling.jpeg",
+            "/uploads/sell4.jpeg",
+            "/uploads/rent1.jpeg",
+            "/uploads/kitchen1.jpeg"
+        ],
+        "rating": 4.3,
+        "location": "654 Studio St, Cityview",
+        "availableRooms": 1,
+        "rentalType": "Studio",
+        "description": "A stylish studio apartment in a vibrant neighborhood.",
+        "price": 1900,
+        "minPrice": 1800,
+        "phoneNumber": "4455667788",
+        "email": "stylish@apartment.com"
+    },
+    {
+        "id": 12,
+        "title": "Countryside Retreat",
+        "images": [
+            "/uploads/rent4.jpeg",
+            "/uploads/sell6.jpeg",
+            "/uploads/ling2.jpeg",
+            "/uploads/kitchen2.jpeg"
+        ],
+        "rating": 4.7,
+        "location": "123 Countryside Rd, Rural Area",
+        "availableRooms": 2,
+        "rentalType": "Cottage",
+        "description": "A peaceful retreat surrounded by nature.",
+        "price": 1700,
+        "minPrice": 1600,
+        "phoneNumber": "5566778899",
+        "email": "countryside@apartment.com"
+    }
+]
