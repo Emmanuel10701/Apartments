@@ -4,29 +4,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { IoFilterSharp } from 'react-icons/io5';
 
-interface SearchNavbarProps {
-    onSearch: (filters: SearchFilters) => void;
-}
-
-interface SearchFilters {
-    minRent?: number;
-    maxRent?: number;
-    rentalType?: string;
-    propertyType?: string;
-}
-
-const SearchNavbar: React.FC<SearchNavbarProps> = ({ onSearch }) => {
-    const [minRent, setMinRent] = useState<number | ''>('');
-    const [maxRent, setMaxRent] = useState<number | ''>('');
-    const [rentalType, setRentalType] = useState<string>('');
-    const [propertyType, setPropertyType] = useState<string>('');
-    const [showModal, setShowModal] = useState<boolean>(false);
+const SearchNavbar = ({ onSearch }) => {
+    const [minRent, setMinRent] = useState('');
+    const [maxRent, setMaxRent] = useState('');
+    const [rentalType, setRentalType] = useState('');
+    const [propertyType, setPropertyType] = useState('');
+    const [showModal, setShowModal] = useState(false);
     
-    const modalRef = useRef<HTMLDivElement>(null);
+    const modalRef = useRef(null);
 
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (showModal && modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        const handleClickOutside = (event) => {
+            if (showModal && modalRef.current && !modalRef.current.contains(event.target)) {
                 setShowModal(false);
             }
         };
@@ -38,12 +27,12 @@ const SearchNavbar: React.FC<SearchNavbarProps> = ({ onSearch }) => {
     }, [showModal]);
 
     const handleFiltersSubmit = () => {
-        if (minRent !== '' && maxRent !== '' && minRent > maxRent) {
+        if (minRent !== '' && maxRent !== '' && Number(minRent) > Number(maxRent)) {
             alert("Min Rent cannot be greater than Max Rent."); // Replace toast with alert
             return;
         }
 
-        const filters: SearchFilters = {
+        const filters = {
             minRent: minRent !== '' ? Number(minRent) : undefined,
             maxRent: maxRent !== '' ? Number(maxRent) : undefined,
             rentalType,
