@@ -72,8 +72,10 @@ const ApartmentCard = ({ apartment }) => {
                     </span>
                 </div>
                 <Link href={`/homepage/${apartment.id}`} className="mt-2 inline-block text-indigo-600 font-bold hover:underline">
-                    Visit to see the apartment
-                </Link>
+                {console.log(`Apartment ID: ${apartment.id}`)} {/* Debugging */}
+                Visit to see the apartment
+            </Link>
+
             </div>
             <div className="flex items-center justify-center p-4 bg-gray-50">
                 <button onClick={handleCallClick} className="bg-indigo-600 text-white rounded-full px-4 py-2 mr-2">

@@ -2,8 +2,6 @@ import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prisma from '../../../libs/prisma';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import GoogleProvider from 'next-auth/providers/google';
-import GithubProvider from 'next-auth/providers/github';
 import bcrypt from 'bcryptjs';
 
 export const authOptions = {
@@ -42,24 +40,6 @@ export const authOptions = {
         };
       },
     }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-      profile: (profile) => ({
-        id: profile.sub,
-        name: profile.name,
-        email: profile.email,
-      }),
-    }),
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-      profile: (profile) => ({
-        id: profile.id,
-        name: profile.name,
-        email: profile.email,
-      }),
-    }),
   ],
   secret: process.env.SECRET,
   session: {
@@ -72,39 +52,14 @@ export const authOptions = {
     error: '/auth/error',
   },
   callbacks: {
-    async signIn({ user, account }) {
-      if (account?.provider === 'google' || account?.provider === 'github') {
-        if (!user.email) {
-          throw new Error('Email is required for sign-in');
-        }
-
-        const existingUser = await prisma.user.findUnique({
-          where: { email: user.email },
-        });
-
-        if (!existingUser) {
-          await prisma.user.create({
-            data: {
-              name: user.name || '',
-              email: user.email,
-              hashedPassword: '', // No password for OAuth users
-              role: 'USER', // Default role for new users
-            },
-          });
-        }
-      }
-      return true;
-    },
     async session({ session, token }) {
-      if (session.user?.email) {
-        const user = await prisma.user.findUnique({
-          where: { email: session.user.email },
-          select: { role: true },
-        });
+      const user = await prisma.user.findUnique({
+        where: { email: session.user.email },
+        select: { role: true },
+      });
 
-        if (user) {
-          session.user.role = user.role; // Add role to the session
-        }
+      if (user) {
+        session.user.role = user.role; // Add role to the session
       }
       return session;
     },
