@@ -1,13 +1,10 @@
 "use client";
+
 import React, { useState } from 'react';
 import { Button, CircularProgress } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
-interface ModalProps {
-  onClose: () => void;
-}
-
-const Modal: React.FC<ModalProps> = ({ onClose }) => {
+const Modal = ({ onClose }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const router = useRouter();
 
@@ -53,7 +50,7 @@ const Modal: React.FC<ModalProps> = ({ onClose }) => {
 };
 
 // New Page Component
-const Page: React.FC = () => {
+const Page = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -71,7 +68,7 @@ const Page: React.FC = () => {
         Open Modal
       </Button>
 
-      {isModalOpen && <Modal onClose={handleCloseModal} />} // Conditional rendering of Modal
+      {isModalOpen && <Modal onClose={handleCloseModal} />} {/* Conditional rendering of Modal */}
     </div>
   );
 };

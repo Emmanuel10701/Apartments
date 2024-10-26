@@ -5,15 +5,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import { CircularProgress } from '@mui/material';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleLinkClick = (url: string) => {
+  const handleLinkClick = (url) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const handleEmailSubmit = async (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
       }
 
       const data = await response.json();
-      toast.success("Email submitted sucessifully!");
+      toast.success("Email submitted successfully!");
       setEmail('');
     } catch (error) {
       toast.error('Error submitting email. Please try again.');
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
             placeholder="Enter your email" 
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="p-2 rounded-md pl-6 border md:w-1/3 w-[100%] border-gray-300 text-semibold  text-slate-700"
+            className="p-2 rounded-md pl-6 border md:w-1/3 w-[100%] border-gray-300 text-semibold text-slate-700"
             required
           />
           <button type="submit" className="bg-blue-600 text-white p-2 rounded-md ml-2">
