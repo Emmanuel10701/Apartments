@@ -3,16 +3,27 @@
 import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 
-const EmailModal = ({ isOpen, onClose, apartment }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [houseType, setHouseType] = useState("");
-  const [starRating, setStarRating] = useState(0);
-  const [occupation, setOccupation] = useState("");
-  const [userLocation, setUserLocation] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSending, setIsSending] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(null);
+interface Apartment {
+  title: string;
+  email: string;
+}
+
+interface EmailModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  apartment: Apartment; // or whatever type you're using for apartment
+}
+
+const EmailModal: React.FC<EmailModalProps> = ({ isOpen, onClose, apartment }) => {
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [houseType, setHouseType] = useState<string>("");
+  const [starRating, setStarRating] = useState<number>(0);
+  const [occupation, setOccupation] = useState<string>("");
+  const [userLocation, setUserLocation] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [isSending, setIsSending] = useState<boolean>(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   // Reset form when modal is closed
   useEffect(() => {
@@ -28,7 +39,7 @@ const EmailModal = ({ isOpen, onClose, apartment }) => {
     }
   }, [isOpen]);
 
-  const handleSendEmail = async (e) => {
+  const handleSendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Basic validation
@@ -71,7 +82,7 @@ const EmailModal = ({ isOpen, onClose, apartment }) => {
       } else {
         throw new Error(data.error || "Failed to send email.");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error sending email:", error);
       alert(error.message || "An error occurred.");
     } finally {

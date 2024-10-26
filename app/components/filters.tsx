@@ -4,18 +4,29 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { IoFilterSharp } from 'react-icons/io5';
 
-const SearchNavbar = ({ onSearch }) => {
-    const [minRent, setMinRent] = useState('');
-    const [maxRent, setMaxRent] = useState('');
-    const [rentalType, setRentalType] = useState('');
-    const [propertyType, setPropertyType] = useState('');
-    const [showModal, setShowModal] = useState(false);
+interface SearchNavbarProps {
+    onSearch: (filters: SearchFilters) => void;
+}
+
+interface SearchFilters {
+    minRent?: number;
+    maxRent?: number;
+    rentalType?: string;
+    propertyType?: string;
+}
+
+const SearchNavbar: React.FC<SearchNavbarProps> = ({ onSearch }) => {
+    const [minRent, setMinRent] = useState<number | ''>('');
+    const [maxRent, setMaxRent] = useState<number | ''>('');
+    const [rentalType, setRentalType] = useState<string>('');
+    const [propertyType, setPropertyType] = useState<string>('');
+    const [showModal, setShowModal] = useState<boolean>(false);
     
-    const modalRef = useRef(null);
+    const modalRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (showModal && modalRef.current && !modalRef.current.contains(event.target)) {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (showModal && modalRef.current && !modalRef.current.contains(event.target as Node)) {
                 setShowModal(false);
             }
         };
@@ -27,12 +38,12 @@ const SearchNavbar = ({ onSearch }) => {
     }, [showModal]);
 
     const handleFiltersSubmit = () => {
-        if (minRent !== '' && maxRent !== '' && Number(minRent) > Number(maxRent)) {
+        if (minRent !== '' && maxRent !== '' && minRent > maxRent) {
             alert("Min Rent cannot be greater than Max Rent."); // Replace toast with alert
             return;
         }
 
-        const filters = {
+        const filters: SearchFilters = {
             minRent: minRent !== '' ? Number(minRent) : undefined,
             maxRent: maxRent !== '' ? Number(maxRent) : undefined,
             rentalType,
@@ -133,7 +144,7 @@ const SearchNavbar = ({ onSearch }) => {
                                     <input
                                         type="number"
                                         value={minRent}
-                                        onChange={(e) => setMinRent(e.target.value !== '' ? e.target.value : '')}
+                                        onChange={(e) => setMinRent(e.target.value !== '' ? Number(e.target.value) : '')}
                                         placeholder="Min Rent"
                                         className="w-full px-4 py-2 border rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                                     />
@@ -144,7 +155,7 @@ const SearchNavbar = ({ onSearch }) => {
                                     <input
                                         type="number"
                                         value={maxRent}
-                                        onChange={(e) => setMaxRent(e.target.value !== '' ? e.target.value : '')}
+                                        onChange={(e) => setMaxRent(e.target.value !== '' ? Number(e.target.value) : '')}
                                         placeholder="Max Rent"
                                         className="w-full px-4 py-2 border rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                                     />

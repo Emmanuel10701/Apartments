@@ -1,19 +1,30 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import { FaTimes, FaChevronDown, FaChevronUp, FaHome, FaList, FaInfoCircle, FaPhone, FaTachometerAlt } from 'react-icons/fa';
+import { FaTimes, FaChevronDown, FaChevronUp, FaHome, FaList, FaInfoCircle, FaPhone, FaTachometerAlt } from 'react-icons/fa'; // Import necessary icons
 import { usePathname, useRouter } from 'next/navigation';
 
-const LINKS = [
+export interface LinkItem {
+  name: string;
+  href: string;
+  icon: React.ReactNode;
+}
+
+const LINKS: LinkItem[] = [
   { name: 'Home', href: '/', icon: <FaHome className="text-blue-500" /> },
   { name: 'Contact', href: '/contact', icon: <FaPhone className="text-red-500" /> },
   { name: 'Dashboard', href: '/dashboard', icon: <FaTachometerAlt className="text-purple-500" /> },
 ];
 
-const Sidebar = ({ isMenuOpen, toggleMenu }) => {
+interface SidebarProps {
+  isMenuOpen: boolean;
+  toggleMenu: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
   const [isDashboardDropdownOpen, setIsDashboardDropdownOpen] = useState(false);
   const [isListingsDropdownOpen, setIsListingsDropdownOpen] = useState(false);
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const path = usePathname();
   const router = useRouter();
 
@@ -21,8 +32,8 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
   const toggleListingsDropdown = () => setIsListingsDropdownOpen(!isListingsDropdownOpen);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         toggleMenu();
       }
     };
@@ -38,9 +49,9 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
     };
   }, [isMenuOpen, toggleMenu]);
 
-  const handleLinkClick = (href) => {
+  const handleLinkClick = (href: string) => {
     router.push(href);
-    // Uncomment if you want the sidebar to close when a link is clicked
+    // Uncomment the line below if you want the sidebar to close when a link is clicked
     // toggleMenu();
   };
 
@@ -57,7 +68,7 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
         <FaTimes className="w-6 h-6" />
       </button>
       <div className="flex flex-col items-start p-4 mt-10">
-        <ul className="flex flex-col space-y-12">
+        <ul className="flex flex-col space-y-12"> {/* Increased spacing here */}
           {LINKS.map((link) => {
             if (link.name === 'Dashboard') {
               return (

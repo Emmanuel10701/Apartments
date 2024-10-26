@@ -1,9 +1,14 @@
 "use client"; // Keep this at the top for client-side rendering
-
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-const testimonies = [
+interface Testimony {
+  title: string;
+  description: string;
+  image: string;
+}
+
+const testimonies: Testimony[] = [
   {
     title: 'Alice Johnson',
     description: 'Thanks to this platform, I found the perfect rental apartment in no time! Highly recommend!',
@@ -21,7 +26,7 @@ const testimonies = [
   },
 ];
 
-const TestimonySection = () => {
+const TestimonySection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextTestimony = () => {

@@ -16,7 +16,7 @@ const captions = [
     "Well-equipped kitchen for all your cooking needs"
 ];
 
-const Carousel: React.FC = () => {
+const Carousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -56,9 +56,7 @@ const Carousel: React.FC = () => {
                 {images.map((_, index) => (
                     <button
                         key={index}
-                        className={`w-3 h-3 rounded-full mx-1 transition-colors duration-300 ${
-                            currentIndex === index ? 'bg-blue-600' : 'bg-gray-300'
-                        }`}
+                        className={`w-3 h-3 rounded-full mx-1 transition-colors duration-300 ${currentIndex === index ? 'bg-blue-600' : 'bg-gray-300'}`}
                         onClick={() => setCurrentIndex(index)}
                     />
                 ))}
