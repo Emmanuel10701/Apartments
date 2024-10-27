@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import prisma from '../../../libs/prisma';
+import prisma from '../../../../libs/prisma'; // Adjust the import according to your project structure
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 
@@ -37,6 +37,8 @@ export const authOptions = {
           name: user.name,
           email: user.email,
           role: user.role,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
         };
       },
     }),
@@ -47,19 +49,29 @@ export const authOptions = {
     maxAge: 60 * 60 * 2, // Session expires in 2 hours
   },
   pages: {
-    signIn: '/login',
-    newUser: '/register',
-    error: '/auth/error',
+    signIn: '/login',     // Custom login page
+    newUser: '/register', // Custom registration page
+    error: '/auth/error', // Error page
   },
   callbacks: {
+    async signIn({ user }) {
+      return true;
+    },
     async session({ session, token }) {
-      const user = await prisma.user.findUnique({
-        where: { email: session.user.email },
-        select: { role: true },
-      });
+      if (session.user?.email) {
+        try {
+          const user = await prisma.user.findUnique({
+            where: { email: session.user.email },
+            select: { role: true },
+          });
 
-      if (user) {
-        session.user.role = user.role; // Add role to the session
+          if (user) {
+            session.user.role = user.role; // Add role to the session
+            session.user.id = token.id; // Add id to the session
+          }
+        } catch (error) {
+          console.error('Error fetching user role:', error);
+        }
       }
       return session;
     },
