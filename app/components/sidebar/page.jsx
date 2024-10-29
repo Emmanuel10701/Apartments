@@ -77,7 +77,7 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
                         <li>
                           <span
                             className="block px-4 py-2 text-slate-400 text-xl font-bold hover:bg-gray-100 cursor-pointer"
-                            onClick={() => handleLinkClick('/dashboard/overview')}
+                            onClick={() => handleLinkClick('/dashboard')}
                           >
                             Overview
                           </span>
@@ -85,7 +85,7 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
                         <li>
                           <span
                             className="block px-4 py-2 text-slate-400 text-xl font-bold hover:bg-gray-100 cursor-pointer"
-                            onClick={() => handleLinkClick('/dashboard/settings')}
+                            onClick={() => handleLinkClick('/dashboard')}
                           >
                             Settings
                           </span>

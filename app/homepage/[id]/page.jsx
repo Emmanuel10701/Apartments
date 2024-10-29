@@ -124,13 +124,13 @@ const ApartmentDetail = () => {
                         <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ml-3">{apartment.rating}</span>
                     </div>
 
-                    <p>
-                        <span className="text-blue-800 text-md font-semibold px-2.5 py-0.5 ml-3">{apartment.description}</span>
-                        <p>
-                            <p>Modern Accommodation for Students and Young Professionals</p>
-                            Welcome to your new home—a vibrant and stylish accommodation designed to meet the needs of students and young professionals alike. Our space offers a unique blend of comfort and community, providing an ideal environment for study, work, and socializing.
-                        </p>
-                    </p>
+                    <div className="mt-2">
+                        <span className="text-blue-800 text-md font-semibold">{apartment.description}</span>
+                        <div>
+                            <span>Modern Accommodation for Students and Young Professionals</span>
+                            <p>Welcome to your new home—a vibrant and stylish accommodation designed to meet the needs of students and young professionals alike. Our space offers a unique blend of comfort and community, providing an ideal environment for study, work, and socializing.</p>
+                        </div>
+                    </div>
 
                     <div className="flex items-center justify-between mt-4">
                         <span className="text-4xl font-bold text-green-600">${apartment.price}/month</span>

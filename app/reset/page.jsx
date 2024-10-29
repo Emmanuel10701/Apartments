@@ -8,11 +8,15 @@ import { z } from 'zod';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const passwordSchema = z.object({
-  newPassword: z.string().min(8, 'Password must be at least 8 characters long').regex(/[0-9]/, 'Password must contain a number').regex(/[a-zA-Z]/, 'Password must contain a letter'),
-  confirmPassword: z.string().min(8, 'Confirm Password must be at least 8 characters long'),
+  newPassword: z.string()
+    .min(8, 'Password must be at least 8 characters long')
+    .regex(/[0-9]/, 'Password must contain a number')
+    .regex(/[a-zA-Z]/, 'Password must contain a letter'),
+  confirmPassword: z.string()
+    .min(8, 'Confirm Password must be at least 8 characters long'),
 }).refine(data => data.newPassword === data.confirmPassword, {
   message: "Passwords don't match",
-  path: ["confirmPassword"], // path of error
+  path: ["confirmPassword"],
 });
 
 const ResetPasswordPage = () => {
@@ -21,7 +25,7 @@ const ResetPasswordPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const token = new URLSearchParams(window.location.search).get('token');
+  const token = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('token') : '';
 
   const handleSubmit = async (e) => {
     e.preventDefault();

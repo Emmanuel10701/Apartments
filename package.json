@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -34,8 +34,8 @@
     "nodemailer": "^6.9.15",
     "pdfmake": "^0.2.13",
     "pg": "^8.13.0",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-feather": "^2.0.10",
     "react-hook-form": "^7.53.0",
     "react-icons": "^5.3.0",

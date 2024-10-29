@@ -47,7 +47,7 @@ const ApartmentCard = ({ apartment }) => {
                     <FaChevronRight className="text-gray-700" />
                 </button>
             </div>
-            <div className="p-4 h-full flex flex-col justify-between">
+            <div className="p-2 h-full flex flex-col justify-between">
                 <div>
                     <h5 className="text-xl font-bold text-slate-600">{apartment.title}</h5>
                     <div className="flex items-center mt-2 mb-2">
@@ -64,26 +64,24 @@ const ApartmentCard = ({ apartment }) => {
                     </div>
                     <p className="text-slate-600">Rooms: {apartment.availableRooms} | Type: {apartment.rentalType}</p>
                     <p className="mt-2 text-slate-600">{apartment.description}</p>
-                </div>
-                <div className="flex items-center justify-between mt-4">
                     <span className="text-xl flex justify-around items-center font-bold text-slate-600">
                         ${apartment.price}/month
                         <span className="line-through text-md text-gray-500 ml-2">${apartment.minPrice}</span>
                     </span>
                 </div>
-                <Link href={`/homepage/${apartment.id}`} className="mt-2 inline-block text-indigo-600 font-bold hover:underline">
-                {console.log(`Apartment ID: ${apartment.id}`)} {/* Debugging */}
-                Visit to see the apartment
-            </Link>
-
-            </div>
-            <div className="flex items-center justify-center p-4 bg-gray-50">
-                <button onClick={handleCallClick} className="bg-indigo-600 text-white rounded-full px-4 py-2 mr-2">
-                    <FaPhone className="inline" /> Call
-                </button>
-                <button onClick={handleEmailClick} className="bg-green-600 text-white rounded-full px-4 py-2">
-                    <FaEnvelope className="inline" /> Email
-                </button>
+                <Link href={`/homepage/${apartment.id}`} className="mt-1 inline-block text-indigo-600 font-bold hover:underline">
+                    Visit to see the apartment
+                </Link>
+                {/* Call and Email Buttons at the top */}
+                <div className="flex items-center justify-center mt-2 p-4 bg-gray-50">
+                    <button onClick={handleCallClick} className="bg-indigo-600 text-white rounded-full px-4 py-2 mr-2">
+                        <FaPhone className="inline" /> Call
+                    </button>
+                    <button onClick={handleEmailClick} className="bg-green-600 text-white rounded-full px-4 py-2">
+                        <FaEnvelope className="inline" /> Email
+                    </button>
+                </div>
+               
             </div>
             {isModalOpen && (
                 <EmailModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} apartment={apartment} />
