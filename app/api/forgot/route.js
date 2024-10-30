@@ -3,6 +3,8 @@ import nodemailer from 'nodemailer';
 import prisma from '../../../libs/prisma'; // Adjust the path as needed
 import { v4 as uuidv4 } from 'uuid';
 
+const url = "https://apartments-site-rental.vercel.app";
+
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
@@ -21,7 +23,7 @@ export async function POST(req) {
     }
 
     const token = uuidv4(); // Generate a unique token
-    const resetLink = `${process.env.NEXT_PUBLIC_URL}/reset?token=${token}`;
+    const resetLink = `${url}/reset?token=${token}`; // Use fixed URL
 
     // Set expiration to 1 hour from now
     const expires = new Date(Date.now() + 3600000); // 1 hour in milliseconds
