@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# [Live Demo](https://apartments-site-rental.vercel.app/)
 
-## Getting Started
+## Apartment Rentals Platform 🏡
 
-First, run the development server:
+This project is an apartment rental platform where property owners can:  
+- Post properties for rent.  
+- Manage their listings effectively.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+It is designed for students and other users interested in renting apartments. The platform includes features such as authentication, property search, and messaging.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features 🚀
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Property Listing**  
+   - Owners can easily post and manage their properties.  
 
-## Learn More
+2. **Search and Filters**  
+   - Users can search for apartments based on location, price range, and more.  
 
-To learn more about Next.js, take a look at the following resources:
+3. **Authentication and Authorization**  
+   - Secure login and registration using Credentials Provider and Google OAuth.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Messaging System**  
+   - Contact property owners directly via an integrated mailing system.  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **Modern UI/UX**  
+   - Fully responsive design built with Tailwind CSS for seamless experience across devices.
 
-## Deploy on Vercel
+6. **Scalable Backend**  
+   - Developed using `next/server` for efficient server-side handling.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Technologies Used 💻
+
+- **Framework**: Next.js as the full-stack framework (in JSX).  
+- **Styling**: Tailwind CSS for modern and responsive design.  
+- **Database**: MongoDB for scalable and reliable data storage.  
+- **Authentication**: Credentials Provider and Google OAuth for secure user access.  
+- **Mailing System**: Nodemailer for sending emails (e.g., inquiries, confirmations).  
+- **Backend**: Next.js `next/server` for server-side functionality.  
+- **Hosting**: Vercel for fast deployment and hosting.  
+
+---
+
+## How It Works 🛠
+
+### For Property Owners  
+1. **Sign Up**  
+   - Create an account or log in using Google.  
+
+2. **Post Listings**  
+   - Add property details such as location, price, and images.  
+
+3. **Manage Properties**  
+   - Edit or delete your listings as needed.  
+
+---
+
+### For Renters  
+1. **Browse Apartments**  
+   - Search and filter properties based on your preferences.  
+
+2. **Contact Owners**  
+   - Send inquiries directly via the integrated mailing system.  
+
+---
+
+## How Your Data is Handled 🔐
+
+Your privacy is our top priority:  
+- **Passwords**: Securely hashed to ensure privacy and security.  
+- **Emails**: Only used for authentication and communication purposes.  
+- **Listings**: Data stored securely in MongoDB with restricted access.
+
+---
+
+## Setup and Installation 💾
+
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/Emmanuel10701/Apartments
+   cd apartment-rentals
