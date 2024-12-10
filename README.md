@@ -16,7 +16,7 @@ It is designed for students and other users interested in renting apartments. Th
    - Owners can easily post and manage their properties.  
 
 2. **Search and Filters**  
-   - Users can search for apartments based on location, price range, and more.  
+   - Users can search for apartments based on location, price range, and more to consider as part of their needs as studnets.  
 
 3. **Authentication and Authorization**  
    - Secure login and registration using Credentials Provider and Google OAuth.  
