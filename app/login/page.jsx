@@ -1,13 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import {
-  FaEnvelope,
-  FaLock,
-  FaEye,
-  FaEyeSlash,
-} from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 
+import React, { useState, useEffect } from "react";
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import { CircularProgress } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
@@ -19,6 +14,7 @@ const LoginPage = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [socialLoading, setSocialLoading] = useState(false);  // State for social login loading
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -64,8 +60,15 @@ const LoginPage = () => {
     return "An unexpected error occurred. Please try again.";
   };
 
-  const handleSocialLogin = (provider) => {
-    signIn(provider);
+  const handleSocialLogin = async (provider) => {
+    setSocialLoading(true);  // Start loading for social login
+    try {
+      await signIn(provider);
+    } catch (error) {
+      toast.error("Social login failed. Please try again.");
+    } finally {
+      setSocialLoading(false);  // Stop loading once the sign-in process is finished
+    }
   };
 
   return (
@@ -127,23 +130,31 @@ const LoginPage = () => {
                 "Sign In"
               )}
             </button>
+            {/* Google Sign-In */}
             <button
-          onClick={() => signIn("google")}
-          className="flex items-center  mt-4  justify-center w-full py-3 bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-100 transition"
-        >
-          <FcGoogle className="text-2xl mr-3" />
-          <span className="text-gray-700 font-medium">Sign in with Google</span>
-        </button>
-        <p className="text-center text-sm text-gray-500 mt-6">
-          By signing in, you agree to our{" "}
-          <a href="#" className="text-blue-500 hover:underline">
-            Terms of Service
-          </a>{" "}
-          and{" "}
-          <a href="#" className="text-blue-500 hover:underline">
-            Privacy Policy
-          </a>.
-        </p>
+              onClick={() => handleSocialLogin("google")}
+              className="flex items-center mt-4 justify-center w-full py-3 bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-100 transition"
+              disabled={socialLoading}
+            >
+              {socialLoading ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                <>
+                  <FcGoogle className="text-2xl mr-3" />
+                  <span className="text-gray-700 font-medium">Sign in with Google</span>
+                </>
+              )}
+            </button>
+            <p className="text-center text-sm text-gray-500 mt-6">
+              By signing in, you agree to our{" "}
+              <a href="#" className="text-blue-500 hover:underline">
+                Terms of Service
+              </a>{" "}
+              and{" "}
+              <a href="#" className="text-blue-500 hover:underline">
+                Privacy Policy
+              </a>.
+            </p>
           </form>
 
           <div className="text-center mt-4">
