@@ -64,7 +64,7 @@ const MyPage = () => {
   const router = useRouter();
 
   return (
-    <div className="font-poppins -z-1000">
+    <div className="font-poppins z-100000">
       {/* Navigation */}
       <header className="relative text-center py-16 bg-cover  bg-center w-full flex items-center justify-center" style={{ backgroundImage: "url('/chicago.avif')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
         {/* Semi-transparent overlay */}
