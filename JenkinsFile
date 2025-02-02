@@ -1,0 +1,98 @@
+pipeline {
+    agent any
+
+    environment {
+        // Define environment variables like for Docker, credentials, etc.
+        DOCKER_IMAGE = "nextjs-app-image"
+        DOCKER_REGISTRY = "my-docker-registry"
+        NODE_ENV = "production"
+        FRONTEND_URL = "https://frontend.myapp.com"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from the Git repository
+                git branch: 'main', url: 'https://github.com/Emmanuel10701/AI_Prediction_Model.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install frontend and backend dependencies
+                    dir('frontend') {
+                        sh 'npm install'
+                    }
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                script {
+                    // Run tests for your Next.js application
+                    dir('frontend') {
+                        sh 'npm test'
+                    }
+                }
+            }
+        }
+
+        stage('Build Next.js App') {
+            steps {
+                script {
+                    // Build the Next.js application for production
+                    dir('frontend') {
+                        sh 'npm run build'
+                    }
+                }
+            }
+        }
+
+        stage('Dockerize App') {
+            steps {
+                script {
+                    // Create a production-ready Docker image for the application
+                    sh 'docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE .'
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Push the Docker image to a registry
+                    sh 'docker push $DOCKER_REGISTRY/$DOCKER_IMAGE'
+                }
+            }
+        }
+
+        stage('Deploy to Production') {
+            steps {
+                script {
+                    // SSH into your server to deploy or use your Kubernetes environment
+                    sh 'ssh -o StrictHostKeyChecking=no user@production-server "docker pull $DOCKER_REGISTRY/$DOCKER_IMAGE && docker-compose -f docker-compose.prod.yml up -d"'
+                }
+            }
+        }
+
+        stage('Notify Success') {
+            steps {
+                script {
+                    // Notify on Slack or any other communication tool
+                    slackSend(channel: '#deployments', message: "Deployment was successful!")
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Deployment completed successfully.'
+        }
+        failure {
+            echo 'Deployment failed.'
+        }
+    }
+}
