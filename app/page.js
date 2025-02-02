@@ -130,7 +130,7 @@ const MyPage = () => {
             How to Secure Your <span className='text-green-700'>New Home</span>
           </h2>
           <p className='text-center w-1/2 text-md text-slate-500 my-10 mx-auto'>Follow these steps to ensure a smooth rental process.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 -z-10 lg:grid-cols-4 gap-6">
             {stepsData.map((step, index) => (
               <div
                 key={index}
@@ -161,7 +161,7 @@ const MyPage = () => {
             {offers.map((offer, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition-transform duration-500 transform hover:scale-103 w-full sm:w-1/2 lg:w-1/4"
+                className="flex flex-col -z-10 items-center p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition-transform duration-500 transform hover:scale-103 w-full sm:w-1/2 lg:w-1/4"
               >
                 <Image
                   src={offer.image}
