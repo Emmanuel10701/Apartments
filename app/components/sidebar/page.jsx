@@ -45,7 +45,7 @@ const Sidebar = ({ isMenuOpen, toggleMenu }) => {
   return (
     
     <div
-    className={`fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} z-10`}
+    className={`fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} z-100`}
     ref={menuRef}
     >
       <button
