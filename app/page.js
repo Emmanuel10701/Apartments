@@ -66,7 +66,7 @@ const MyPage = () => {
   return (
     <div className="font-poppins ">
       {/* Navigation */}
-      <header className="relative text-center py-16 bg-cover  bg-center w-full flex items-center justify-center" style={{ backgroundImage: "url('/chicago.avif')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <header className="relative text-center py-16 bg-cover -z-10  bg-center w-full flex items-center justify-center" style={{ backgroundImage: "url('/chicago.avif')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
         {/* Semi-transparent overlay */}
         <div className="absolute inset-0 z-10 bg-black opacity-50"></div>
 
