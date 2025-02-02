@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-slate-100 shadow-md mb-20">
-      <nav className="flex w-full items-center fixed top-0 z-100 right-0 justify-between bg-zinc-50 py-2 shadow-dark-mild dark:bg-neutral-700 lg:py-4">
+      <nav className="flex w-full items-center fixed top-0 z-5000 right-0 justify-between bg-zinc-50 py-2 shadow-dark-mild dark:bg-neutral-700 lg:py-4">
         <div className="flex w-full items-center justify-between px-3">
           {/* Hamburger Menu Button */}
           <button
