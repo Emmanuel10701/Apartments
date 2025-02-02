@@ -64,9 +64,9 @@ const ApartmentCard = ({ apartment }) => {
                     </div>
                     <p className="text-slate-600">Rooms: {apartment.availableRooms} | Type: {apartment.rentalType}</p>
                     <p className="mt-2 text-slate-600">{apartment.description}</p>
-                    <span className="text-xl flex justify-around items-center font-bold text-slate-600">
+                    <span className="text-xl flex justify-around items-center font-bold text-green-600">
                         ${apartment.price}/month
-                        <span className="line-through text-md text-gray-500 ml-2">${apartment.minPrice}</span>
+                        <span className="line-through text-md font-semibold text-gray-500 ml-2">${apartment.minPrice}</span>
                     </span>
                 </div>
                 <Link href={`/homepage/${apartment.id}`} className="mt-1 inline-block text-indigo-600 font-bold hover:underline">
