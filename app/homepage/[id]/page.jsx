@@ -132,10 +132,15 @@ const ApartmentDetail = () => {
                         </div>
                     </div>
 
-                    <div className="flex items-center justify-between mt-4">
-                        <span className="text-4xl font-bold text-green-600">${apartment.price}/month</span>
-                        <span className="text-sm text-gray-500">Min Price: <span className="text-gray-800 font-semibold">${apartment.minPrice}</span></span>
-                    </div>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4">
+  <span className="text-3xl sm:text-2xl font-bold text-green-600">
+    ${apartment.price}/month
+  </span>
+  <span className="text-sm sm:text-base text-gray-500 mt-2 sm:mt-0">
+    Min Price: <span className="text-gray-800 font-semibold">${apartment.minPrice}</span>
+  </span>
+</div>
+
 
                     <div className="flex justify-center mt-4">
                         <button
