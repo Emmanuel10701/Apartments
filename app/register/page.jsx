@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa'; 
@@ -55,10 +56,10 @@ const RegisterPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 p-4">
       <div className="flex flex-col items-center justify-center flex-1">
-        <div className="w-full max-w-xl p-12 bg-white shadow-lg rounded-lg mb-8">
-          <h2 className="text-4xl font-extrabold text-center mb-6 text-slate-600">🔏 Register</h2>
+        <div className="w-full max-w-lg sm:max-w-xl p-6 sm:p-12 bg-white shadow-lg rounded-lg mb-8">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-center mb-6 text-slate-600">🔏 Register</h2>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div className="relative">
               <input
                 type="text"
