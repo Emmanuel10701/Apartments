@@ -68,7 +68,7 @@ const MyPage = () => {
       {/* Navigation */}
       <header className="relative text-center py-16 bg-cover -z-10  bg-center w-full flex items-center justify-center" style={{ backgroundImage: "url('/chicago.avif')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
         {/* Semi-transparent overlay */}
-        <div className="absolute inset-0 z-10 bg-black opacity-50"></div>
+        <div className="absolute inset-0 z-10 bg-black opacity-30"></div>
 
         <div className="relative flex flex-col items-center justify-center mx-4 md:mx-20 mt-20 -z-10">
           <h1 className="mb-4 text-4xl md:text-5xl font-bold text-white">
