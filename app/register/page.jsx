@@ -70,7 +70,7 @@ const RegisterPage = () => {
                 placeholder="Username"
                 required
               />
-              <FaUser className="absolute left-3 top-3 text-gray-500 text-xl" />
+              <FaUser className="absolute left-4 top-3 text-gray-500 text-xl" />
             </div>
             <div className="relative">
               <input
@@ -82,7 +82,7 @@ const RegisterPage = () => {
                 placeholder="Email Address"
                 required
               />
-              <FaEnvelope className="absolute left-3 top-3 text-gray-500 text-xl" />
+              <FaEnvelope className="absolute left-4 top-3 text-gray-500 text-xl" />
             </div>
             <div className="relative">
               <input
@@ -94,9 +94,9 @@ const RegisterPage = () => {
                 placeholder="Password"
                 required
               />
-              <FaLock className="absolute left-3 top-3 text-gray-500 text-xl" />
+              <FaLock className="absolute left-4 top-3 text-gray-500 text-xl" />
               <div
-                className="absolute right-3 top-3 text-gray-500 text-xl cursor-pointer"
+                className="absolute right-4 top-3 text-gray-500 text-xl cursor-pointer"
                 onClick={() => setPasswordVisible(!passwordVisible)}
               >
                 {passwordVisible ? <FaEyeSlash /> : <FaEye />}

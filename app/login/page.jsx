@@ -14,7 +14,7 @@ const LoginPage = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [socialLoading, setSocialLoading] = useState(false);  // State for social login loading
+  const [socialLoading, setSocialLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -61,111 +61,111 @@ const LoginPage = () => {
   };
 
   const handleSocialLogin = async (provider) => {
-    setSocialLoading(true);  // Start loading for social login
+    setSocialLoading(true);
     try {
       await signIn(provider);
     } catch (error) {
       toast.error("Social login failed. Please try again.");
     } finally {
-      setSocialLoading(false);  // Stop loading once the sign-in process is finished
+      setSocialLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100 p-4">
-      <div className="flex flex-col items-center justify-center flex-1">
-        <div className="w-full max-w-xl p-6 sm:p-8 md:p-12 bg-white shadow-lg rounded-lg mb-8">
-          <h2 className="text-4xl font-extrabold text-center mb-6 text-slate-600">
-            🔒 Login
-          </h2>
+    <div className="flex flex-col min-h-screen bg-gray-100 p-4 justify-center items-center">
+      <div className="w-full max-w-lg p-6 sm:p-8 md:p-12 bg-white shadow-lg rounded-lg mb-8">
+        <h2 className="text-4xl font-extrabold text-center mb-6 text-gradient">🔒 Login</h2>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="relative">
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-2 sm:p-4 border border-gray-300 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
-                placeholder="Email Address"
-                required
-              />
-              <FaEnvelope className="absolute left-3 top-3 text-gray-500 text-xl" />
-            </div>
-            <div className="relative">
-              <input
-                type={passwordVisible ? "text" : "password"}
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-2 sm:p-4 border border-gray-300 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
-                placeholder="Password"
-                required
-              />
-              <FaLock className="absolute left-3 top-3 text-gray-500 text-xl" />
-              <div
-                className="absolute right-3 top-3 cursor-pointer text-xl text-gray-500"
-                onClick={() => setPasswordVisible(!passwordVisible)}
-              >
-                {passwordVisible ? <FaEyeSlash /> : <FaEye />}
-              </div>
-            </div>
-            <div className="text-end mt-4">
-              <Link href="/forgot">
-                <span className="text-blue-500 hover:underline">
-                  Forgot Password?
-                </span>
-              </Link>
-            </div>
-            <button
-              type="submit"
-              className={`w-full py-4 bg-blue-500 text-white font-bold rounded-lg ${loading ? "border-2 border-indigo-800" : ""} hover:bg-blue-600 transition-colors relative`}
-            >
-              {loading ? (
-                <div className="flex items-center justify-center space-x-2">
-                  <span className="text-white">Processing...</span>
-                  <CircularProgress size={24} color="inherit" style={{ color: "white" }} />
-                </div>
-              ) : (
-                "Sign In"
-              )}
-            </button>
-            {/* Google Sign-In */}
-            <button
-              onClick={() => handleSocialLogin("google")}
-              className="flex items-center mt-4 justify-center w-full py-3 bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-100 transition"
-              disabled={socialLoading}
-            >
-              {socialLoading ? (
-                <CircularProgress size={24} color="inherit" />
-              ) : (
-                <>
-                  <FcGoogle className="text-2xl mr-3" />
-                  <span className="text-gray-700 font-medium">Sign in with Google</span>
-                </>
-              )}
-            </button>
-            <p className="text-center text-sm text-gray-500 mt-6">
-              By signing in, you agree to our{" "}
-              <a href="#" className="text-blue-500 hover:underline">
-                Terms of Service
-              </a>{" "}
-              and{" "}
-              <a href="#" className="text-blue-500 hover:underline">
-                Privacy Policy
-              </a>.
-            </p>
-          </form>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Email input */}
+          <div className="relative">
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-4 border border-gray-300 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
+              placeholder="Email Address"
+              required
+            />
+            <FaEnvelope className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl" />
+          </div>
 
-          <div className="text-center mt-4">
-            Don&apos;t have an account?
-            <Link href="/register">
-              <span className="text-blue-500 hover:underline"> Register</span>
+          {/* Password input */}
+          <div className="relative">
+            <input
+              type={passwordVisible ? "text" : "password"}
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-4 border border-gray-300 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
+              placeholder="Password"
+              required
+            />
+            <FaLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl" />
+            <div
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-xl text-gray-500"
+              onClick={() => setPasswordVisible(!passwordVisible)}
+            >
+              {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+            </div>
+          </div>
+
+          {/* Forgot password link */}
+          <div className="text-end mt-4">
+            <Link href="/forgot">
+              <span className="text-blue-500 hover:underline">Forgot Password?</span>
             </Link>
           </div>
 
-          <ToastContainer />
+          {/* Submit button */}
+          <button
+            type="submit"
+            className={`w-full py-4 bg-blue-500 text-white font-bold rounded-lg ${loading ? "border-2 border-indigo-800" : ""} hover:bg-blue-600 transition-colors relative`}
+          >
+            {loading ? (
+              <div className="flex items-center justify-center space-x-2">
+                <span className="text-white">Processing...</span>
+                <CircularProgress size={24} color="inherit" style={{ color: "white" }} />
+              </div>
+            ) : (
+              "Sign In"
+            )}
+          </button>
+
+          {/* Google Sign-In */}
+          <button
+            onClick={() => handleSocialLogin("google")}
+            className="flex items-center mt-4 justify-center w-full py-3 bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-100 transition"
+            disabled={socialLoading}
+          >
+            {socialLoading ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              <>
+                <FcGoogle className="text-2xl mr-3" />
+                <span className="text-gray-700 font-medium">Sign in with Google</span>
+              </>
+            )}
+          </button>
+
+          <p className="text-center text-sm text-gray-500 mt-6">
+            By signing in, you agree to our{" "}
+            <a href="#" className="text-blue-500 hover:underline">Terms of Service</a>{" "}
+            and{" "}
+            <a href="#" className="text-blue-500 hover:underline">Privacy Policy</a>.
+          </p>
+        </form>
+
+        {/* Register Link */}
+        <div className="text-center mt-4">
+          Don't have an account?
+          <Link href="/register">
+            <span className="text-blue-500 hover:underline"> Register</span>
+          </Link>
         </div>
+
+        <ToastContainer />
       </div>
     </div>
   );
