@@ -93,7 +93,7 @@ const MyPage = () => {
           </div>
 
           {/* Statistics Section */}
-          <div className="max-w-7xl mx-auto w-full rounded-full -z-100 mt-16">
+          <div className="max-w-7xl mx-auto w-full rounded-full  mt-16">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
               Our Statistics
             </h2>
