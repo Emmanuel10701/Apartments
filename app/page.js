@@ -70,7 +70,7 @@ const MyPage = () => {
         {/* Semi-transparent overlay */}
         <div className="absolute inset-0 bg-black opacity-50"></div>
 
-        <div className="relative flex flex-col items-center justify-center mx-4 md:mx-20 mt-20 z-10">
+        <div className="relative flex flex-col items-center justify-center mx-4 md:mx-20 mt-20 -z-10">
           <h1 className="mb-4 text-4xl md:text-5xl font-bold text-white">
             Discover Your Perfect <span className="text-purple-600">Rental</span> Match
           </h1>
