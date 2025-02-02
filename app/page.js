@@ -134,7 +134,7 @@ const MyPage = () => {
             {stepsData.map((step, index) => (
               <div
                 key={index}
-                className={`p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition-transform duration-500 transform hover:scale-103 relative`}
+                className={`p-6 bg-white shadow-lg -z-10 rounded-lg hover:shadow-xl transition-transform duration-500 transform hover:scale-103 relative`}
               >
                 <span className={`mb-4 text-center rounded-full px-2 flex items-center justify-center py-2 w-10 h-10 text-xl ${step.colorClass}`}>
                   {step.icon}
