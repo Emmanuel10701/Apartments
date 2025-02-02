@@ -74,7 +74,7 @@ const LoginPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 p-4">
       <div className="flex flex-col items-center justify-center flex-1">
-        <div className="w-full max-w-xl p-12 bg-white shadow-lg rounded-lg mb-8">
+        <div className="w-full max-w-xl p-6 sm:p-8 md:p-12 bg-white shadow-lg rounded-lg mb-8">
           <h2 className="text-4xl font-extrabold text-center mb-6 text-slate-600">
             🔒 Login
           </h2>
@@ -86,7 +86,7 @@ const LoginPage = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-4 border border-gray-300 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
+                className="w-full p-2 sm:p-4 border border-gray-300 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
                 placeholder="Email Address"
                 required
               />
@@ -98,7 +98,7 @@ const LoginPage = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-4 border border-gray-300 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
+                className="w-full p-2 sm:p-4 border border-gray-300 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
                 placeholder="Password"
                 required
               />
