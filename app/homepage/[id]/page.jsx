@@ -81,7 +81,7 @@ const ApartmentDetail = () => {
                 {apartment.title}
             </h1>
             <div className="relative flex-col gap-2">
-                <div className="md:flex flex-col gap-3 p-4 md:gap-6 md:p-8">
+                <div className="md:flex flex-col -z-10 gap-3 p-4 md:gap-6 md:p-8">
                     <Image
                         src={mainImage}
                         alt={apartment.title}
