@@ -83,38 +83,38 @@ const MainComponent = () => {
     return (
         <div className="flex flex-col p-4">
             <Carousel />
-            <div className="flex flex-col sm:flex-row items-center justify-evenly mt-20 mx-20 mb-4">
-                <input
-                    type="text"
-                    placeholder="Search apartments..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    onFocus={(e) => e.target.classList.add("shadow-md")}
-                    onBlur={(e) => e.target.classList.remove("shadow-md")}
-                    className="w-full sm:w-1/2 p-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-300"
-                    aria-label="Search apartments"
-                />
-                <input
-                    type="text"
-                    placeholder="Location..."
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    onFocus={(e) => e.target.classList.add("shadow-md")}
-                    onBlur={(e) => e.target.classList.remove("shadow-md")}
-                    className="w-full sm:w-1/2 p-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 mt-2 sm:mt-0 sm:ml-2 transition-shadow duration-300"
-                    aria-label="Search location"
-                />
-                <button
-                    onClick={() => {
-                        handleSearchSubmit();
-                        setSearchTerm('');
-                        setLocation('');
-                    }}
-                    className="mt-2 sm:mt-0 bg-transparent border border-blue-600 text-blue-600 px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                    Search
-                </button>
-            </div>
+            <div className="flex flex-col items-center justify-center mt-20 mx-4 sm:mx-20 mb-4">
+    <input
+        type="text"
+        placeholder="Search apartments..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onFocus={(e) => e.target.classList.add("shadow-md")}
+        onBlur={(e) => e.target.classList.remove("shadow-md")}
+        className="w-[95%] sm:w-1/2 p-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-300"
+        aria-label="Search apartments"
+    />
+    <input
+        type="text"
+        placeholder="Location..."
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        onFocus={(e) => e.target.classList.add("shadow-md")}
+        onBlur={(e) => e.target.classList.remove("shadow-md")}
+        className="w-[95%] sm:w-1/2 p-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 mt-3 sm:mt-0 sm:ml-2 transition-shadow duration-300"
+        aria-label="Search location"
+    />
+    <button
+        onClick={() => {
+            handleSearchSubmit();
+            setSearchTerm('');
+            setLocation('');
+        }}
+        className="w-[95%] sm:w-auto mt-3 bg-transparent border border-blue-600 text-blue-600 px-6 py-3 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+        Search
+    </button>
+</div>
 
             <SearchNavbar onSearch={handleSearch} />
 
