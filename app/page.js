@@ -79,18 +79,19 @@ const MyPage = () => {
             Join thousands of renters finding their ideal homes. Our platform connects you with top listings across the country.
           </p>
 
-          <div className="flex flex-col md:flex-row justify-center gap-4 mt-6 mb-8">
-            <Link href="/dashboard">
-              <button className="px-5 py-2 font-medium text-white bg-purple-600 rounded-full hover:bg-purple-700 transition duration-300">
-                Post a Listing
-              </button>
-            </Link>
-            <Link href="/homepage">
-              <button className="px-5 py-2 font-medium text-white bg-blue-600 rounded-full hover:bg-blue-700 transition duration-300">
-                Find a Home
-              </button>
-            </Link>
-          </div>
+          <div className="flex flex-row flex-wrap justify-center gap-4 mt-6 mb-8">
+  <Link href="/dashboard">
+    <button className="px-5 py-2 font-medium text-white bg-purple-600 rounded-full hover:bg-purple-700 transition duration-300">
+      Post a Listing
+    </button>
+  </Link>
+  <Link href="/homepage">
+    <button className="px-5 py-2 font-medium text-white bg-blue-600 rounded-full hover:bg-blue-700 transition duration-300">
+      Find a Home
+    </button>
+  </Link>
+</div>
+
 
           {/* Statistics Section */}
           <div className="max-w-7xl mx-auto z-10 w-full rounded-full  mt-16">
