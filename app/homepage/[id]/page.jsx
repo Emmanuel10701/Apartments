@@ -81,15 +81,15 @@ const ApartmentDetail = () => {
                 {apartment.title}
             </h1>
             <div className="relative flex-col gap-2">
-                <div className="md:flex flex-col -z-10 gap-3 p-4 md:gap-6 md:p-8">
+                <div className="md:flex flex-col  gap-3 p-4 md:gap-6 md:p-8">
                     <Image
                         src={mainImage}
                         alt={apartment.title}
                         width={800}
                         height={500}
-                        className="rounded-lg cursor-pointer mt-4 md:w-full md:h-[500px]"
+                        className="rounded-lg -z-10 cursor-pointer mt-4 md:w-full md:h-[500px]"
                     />
-                    <div className="flex flex-wrap p-3 gap-3 md:gap-6 md:p-8">
+                    <div className="flex flex-wrap p-3 -z-10 gap-3 md:gap-6 md:p-8">
                         {apartment.images.map((image, index) => (
                             index !== imageIndex && (
                                 <div className="flex-1" key={index}>
