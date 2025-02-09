@@ -81,13 +81,13 @@ const ApartmentDetail = () => {
                 {apartment.title}
             </h1>
             <div className="relative flex-col  gap-2">
-                <div className="md:flex flex-col  gap-3 p-4  -z-100 md:gap-6 md:p-8">
+                <div className="md:flex flex-col  gap-3 p-4   md:gap-6 md:p-8">
                     <Image
                         src={mainImage}
                         alt={apartment.title}
                         width={800}
                         height={500}
-                        className="rounded-lg  cursor-pointer mt-4 md:w-full md:h-[500px]"
+                        className="rounded-lg -z-1000  cursor-pointer mt-4 md:w-full md:h-[500px]"
                     />
                     <div className="flex flex-wrap p-3 -z-10 gap-3 md:gap-6 md:p-8">
                         {apartment.images.map((image, index) => (
@@ -98,7 +98,7 @@ const ApartmentDetail = () => {
                                         alt={apartment.title}
                                         width={400}
                                         height={300}
-                                        className="rounded-lg cursor-pointer w-full h-full object-cover"
+                                        className="rounded-lg -z-1000 cursor-pointer w-full h-full object-cover"
                                         onClick={() => handleImageClick(index)}
                                     />
                                 </div>
