@@ -80,8 +80,8 @@ const ApartmentDetail = () => {
             <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-500 via-blue-500 to-blue-600 bg-clip-text text-transparent">
                 {apartment.title}
             </h1>
-            <div className="relative flex-col -z-100 gap-2">
-                <div className="md:flex flex-col  gap-3 p-4 md:gap-6 md:p-8">
+            <div className="relative flex-col  gap-2">
+                <div className="md:flex flex-col  gap-3 p-4  -z-100 md:gap-6 md:p-8">
                     <Image
                         src={mainImage}
                         alt={apartment.title}
