@@ -80,14 +80,14 @@ const ApartmentDetail = () => {
             <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-500 via-blue-500 to-blue-600 bg-clip-text text-transparent">
                 {apartment.title}
             </h1>
-            <div className="relative flex-col gap-2">
+            <div className="relative flex-col -z-100 gap-2">
                 <div className="md:flex flex-col  gap-3 p-4 md:gap-6 md:p-8">
                     <Image
                         src={mainImage}
                         alt={apartment.title}
                         width={800}
                         height={500}
-                        className="rounded-lg -z-10 cursor-pointer mt-4 md:w-full md:h-[500px]"
+                        className="rounded-lg  cursor-pointer mt-4 md:w-full md:h-[500px]"
                     />
                     <div className="flex flex-wrap p-3 -z-10 gap-3 md:gap-6 md:p-8">
                         {apartment.images.map((image, index) => (
