@@ -2,97 +2,77 @@ pipeline {
     agent any
 
     environment {
-        // Define environment variables like for Docker, credentials, etc.
-        DOCKER_IMAGE = "nextjs-app-image"
-        DOCKER_REGISTRY = "my-docker-registry"
-        NODE_ENV = "production"
-        FRONTEND_URL = "https://frontend.myapp.com"
+        DOCKER_IMAGE = 'your_dockerhub_username/your_project_name'
+        DOCKER_CREDENTIALS = 'dockerhub_credentials'
+        CONTAINER_NAME = 'your_container_name'
+        DEPLOY_SERVER = 'your_server_ip_or_hostname'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from the Git repository
-                git branch: 'main', url: 'https://github.com/Emmanuel10701/AI_Prediction_Model.git'
+                script {
+                    echo 'Checking out the code from the repository...'
+                    checkout scm
+                }
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Build') {
             steps {
                 script {
-                    // Install frontend and backend dependencies
-                    dir('frontend') {
-                        sh 'npm install'
+                    echo 'Building the Docker image...'
+                    docker.build(DOCKER_IMAGE)
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    echo 'Logging into Docker Hub and pushing the image...'
+                    docker.withRegistry('', DOCKER_CREDENTIALS) {
+                        docker.image(DOCKER_IMAGE).push('latest')
                     }
                 }
             }
         }
 
-        stage('Run Tests') {
+        stage('Deploy') {
             steps {
                 script {
-                    // Run tests for your Next.js application
-                    dir('frontend') {
-                        sh 'npm test'
-                    }
-                }
-            }
-        }
-
-        stage('Build Next.js App') {
-            steps {
-                script {
-                    // Build the Next.js application for production
-                    dir('frontend') {
-                        sh 'npm run build'
-                    }
-                }
-            }
-        }
-
-        stage('Dockerize App') {
-            steps {
-                script {
-                    // Create a production-ready Docker image for the application
-                    sh 'docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE .'
-                }
-            }
-        }
-
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    // Push the Docker image to a registry
-                    sh 'docker push $DOCKER_REGISTRY/$DOCKER_IMAGE'
-                }
-            }
-        }
-
-        stage('Deploy to Production') {
-            steps {
-                script {
-                    // SSH into your server to deploy or use your Kubernetes environment
-                    sh 'ssh -o StrictHostKeyChecking=no user@production-server "docker pull $DOCKER_REGISTRY/$DOCKER_IMAGE && docker-compose -f docker-compose.prod.yml up -d"'
-                }
-            }
-        }
-
-        stage('Notify Success') {
-            steps {
-                script {
-                    // Notify on Slack or any other communication tool
-                    slackSend(channel: '#deployments', message: "Deployment was successful!")
+                    echo 'Deploying the application...'
+                    sh """
+                        docker stop ${CONTAINER_NAME} || true
+                        docker rm ${CONTAINER_NAME} || true
+                    """
+                    sh """
+                        docker run -d --name ${CONTAINER_NAME} -p 80:80 ${DOCKER_IMAGE}:latest
+                    """
+                    echo 'Deployment successful!'
                 }
             }
         }
     }
 
     post {
-        success {
-            echo 'Deployment completed successfully.'
+        always {
+            script {
+                echo 'Pipeline execution completed.'
+                cleanWs()
+            }
         }
+
+        success {
+            script {
+                echo 'Pipeline executed successfully!'
+            }
+        }
+
         failure {
-            echo 'Deployment failed.'
+            script {
+                echo 'Pipeline failed! Check logs for details.'
+            }
         }
     }
 }
